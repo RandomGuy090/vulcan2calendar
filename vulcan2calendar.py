@@ -18,11 +18,6 @@ from vulcan_user import Vulcan_user
 
 
 
-
-
-
-
-
 async def main(loop): 
 
 
