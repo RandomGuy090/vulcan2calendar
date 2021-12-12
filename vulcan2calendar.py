@@ -54,6 +54,12 @@ async def main(loop):
 							'reminders': {
 							'useDefault': True,
 							},
+							 'reminders': {
+						    'useDefault': False,
+						    'overrides': [
+						      {'method': 'popup', 'minutes': 15*60},
+						    ],
+						  },
 						}
 					print(event)
 					all_events.append(event)
