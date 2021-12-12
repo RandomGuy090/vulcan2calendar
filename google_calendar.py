@@ -89,9 +89,30 @@ class Google_user(object):
 			cal_id = self.calendar_id
 
 		return self.service.calendars().get(calendarId=cal_id).execute()
+	def check_if_doubled(self, event, cal_id=None):
+		if cal_id == None:
+			cal_id = self.calendar_id
+		
+		res = self.service.events().list(calendarId=cal_id, pageToken=None).execute()
+
+		for elem in res["items"]:
+			start = elem["start"]["dateTime"].rsplit("+")[0]
+
+			if elem["summary"] == event["summary"] and \
+				start == event["start"]["dateTime"] and \
+				elem["description"] == event["description"]:
+				return True
+		else:
+			return False
 
 	def create_event(self, body, cal_id=None):
 		if cal_id == None:
 			cal_id = self.calendar_id
 
-		return self.service.events().insert(calendarId=cal_id, body=body).execute()
+		if not self.check_if_doubled(body):
+			return self.service.events().insert(calendarId=cal_id, body=body).execute()
+		else:
+			return None
+
+
+
