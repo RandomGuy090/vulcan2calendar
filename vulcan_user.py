@@ -51,6 +51,7 @@ class Vulcan_user(object):
 					self.last_check_date = datetime.datetime.strptime(self.last_check_date.rsplit(".")[0], "%Y-%m-%d %H:%M:%S")
 				except: 
 					self.last_check_date = ""
+				print(self.last_check_date)
 		else:
 			print(f"no such file: last_sync.json")
 
@@ -67,7 +68,7 @@ class Vulcan_user(object):
 			self.last_check_date = datetime.datetime.strptime("2021-09-01 00:00:00", "%Y-%m-%d %H:%M:%S")
 		else:
 			self.last_check_date = datetime.datetime.now()
-			
+
 		res =  await self.client.data.get_exams(last_sync=self.last_check_date)
 
 		self.save_last_check()

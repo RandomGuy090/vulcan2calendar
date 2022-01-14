@@ -61,13 +61,12 @@ async def main(loop):
 						    ],
 						  },
 						}
-					print(event)
+					# print(event)
 					all_events.append(event)
 		except:
 			print("xD")
 
 		for elem in all_events:
-
 			google.create_event(body=elem)
 
 		sleep(5)
