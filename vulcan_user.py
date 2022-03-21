@@ -63,13 +63,27 @@ class Vulcan_user(object):
 	async def set_student(self):
 		await self.client.select_student()
 
-	async def get_exams(self):
+	def set_last_checkt_date(self):
 		if self.last_check_date == None or self.last_check_date == "":
 			self.last_check_date = datetime.datetime.strptime("2021-09-01 00:00:00", "%Y-%m-%d %H:%M:%S")
 		else:
 			self.last_check_date = datetime.datetime.now()
 
+
+	async def get_exams(self):
+		self.set_last_checkt_date()
+		
+
 		res =  await self.client.data.get_exams(last_sync=self.last_check_date)
+
+		self.save_last_check()
+
+		return res
+
+	async def get_homework(self):
+		self.set_last_checkt_date()
+
+		res =  await self.client.data.get_homework(last_sync=self.last_check_date)
 
 		self.save_last_check()
 
