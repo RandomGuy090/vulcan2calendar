@@ -44,6 +44,10 @@ with open("account.json", "w") as f:
 ### install packages
 ```bash
   pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+
+  #or
+
+  pip3 install -r requirements.txt
 ```
 ### set up credentials and service account
 [google guide](https://developers.google.com/workspace/guides/create-credentials)  
