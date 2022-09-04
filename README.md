@@ -59,11 +59,11 @@ docker:
 ```bash
 docker build -t vulcan2calendar --build-arg pin={vulcan pin} --build-arg token={vulcan token} --build-arg symbol={vulcan symbol}  . 
 
-docker run -d -v  /etc/vulcan2calendar/credentials.json:/app/ vulcan2calendar
+docker run -d--restart unless-stopped  -v  /etc/vulcan2calendar/credentials.json:/app/ vulcan2calendar
 ```
  or if you have already registered device on vulcan page, and you don't want to do it again
 ```bash
 docker build -t vulcan2calendar . 
-docker run -d -v  /etc/vulcan2calendar/credentials.json:/app/ -v  /etc/vulcan2calendar/account.json:/app/ -v  /etc/vulcan2calendar/keystore.json:/app/ vulcan2calendar
+docker run -d --restart unless-stopped -v  /etc/vulcan2calendar/credentials.json:/app/ -v  /etc/vulcan2calendar/account.json:/app/ -v  /etc/vulcan2calendar/keystore.json:/app/ vulcan2calendar
 ```
 / in /etc/vulcan2calendar/ I downloaded json files /
