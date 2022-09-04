@@ -18,6 +18,7 @@ except EOFError:
     print("use env variables or mount json files")
     print("use env variables or mount json files")
     print("_____________________________________")
+    sys.exit(0)
 
 
 print(f"{pin} {token} {symbol}")
