@@ -61,7 +61,7 @@ async def homework_loop(client):
 						    ],
 						  },
 						}
-					# print(event)
+				print(event)
 				all_events.append(event)
 				parse_google(event)
 
@@ -102,7 +102,7 @@ async def exams_loop(client):
 						    ],
 						  },
 						}
-					# print(event)
+					print(event)
 					all_events.append(event)
 					parse_google(event)
 			
